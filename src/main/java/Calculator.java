@@ -23,7 +23,11 @@ public class Calculator{
                 System.out.printf("Mult: %.4f\n", multiplication(first, second));
                 break;
             case '/':
-                System.out.printf("Quot: %.4f\n", division(first, second));
+                try {
+                    System.out.printf("Quot: %.4f\n", division(first, second));}
+                catch (MyException e){
+                    e.printStackTrace();
+                }
                 break;
         }
         scanner.close();
@@ -45,7 +49,7 @@ public class Calculator{
      * @param b Второе расчётное значение
      * @return Возвращаем результат вычитания
      */
-    public static float subtraction (float a, float b) {
+    public static float subtraction (float a, float b){
 
         return a - b;
     }
@@ -65,9 +69,21 @@ public class Calculator{
      * @param b Второе расчётное значение
      * @return Возвращаем результат деления
      */
-    public static float division (float a, float b){
-
+    public static float division (float a, float b) throws MyException{
+        if(b == 0){
+            throw new MyException("деление на ноль невозможно!");}
+        else
         return a / b;
     }
 
+    public static class MyException extends Exception{
+        public MyException(){
+        }
+        public MyException(String message){
+            super(message);
+
+        }
+    }
+
 }
+

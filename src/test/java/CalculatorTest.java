@@ -27,9 +27,21 @@ public class CalculatorTest {
     }
 
     @Test
-    public void testDivision() {
+    public void testDivision() throws Calculator.MyException {
 
         double res = Calculator.division(10,2);
         assertFalse(res != 5);
     }
+
+    @Test
+    public void testDivision2() throws Calculator.MyException {
+        try {
+            Calculator.division(10, 0);
+        } catch (Exception e) {
+            assertEquals("деление на ноль невозможно!", e.getMessage());
+            return;
+        }
+    }
+
+
 }
