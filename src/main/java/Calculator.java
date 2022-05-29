@@ -26,6 +26,7 @@ public class Calculator{
                 System.out.printf("Quot: %.4f\n", division(first, second));
                 break;
         }
+        scanner.close();
     }
 
     /**
